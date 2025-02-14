@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pawscare/pages/dashboard.dart';
-import 'package:pawscare/pages/intropage_1.dart';
+import 'package:pawscare/pages/OnBoarding1.dart';
 
 void main() {
   runApp(const MyApp());

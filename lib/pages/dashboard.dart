@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:pawscare/pages/AdoptionPage.dart';
-import 'package:pawscare/pages/intropage_1.dart';
+import 'package:pawscare/pages/OnBoarding1.dart';
 
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:pawscare/widgets/customwidgets.dart';
@@ -33,16 +33,40 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.orangeAccent,
         elevation: 0,
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
-              backgroundImage: AssetImage('assets/profile.jpg'),
+            Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Welcome back, Kartik!",
+                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Let's take care of your pet 🐶",
+                      style: TextStyle(color: Colors.white70, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            SizedBox(width: 10),
-            Text("Welcome back, Kartik!", style: TextStyle(color: Colors.white, fontSize: 18)),
+            IconButton(
+              icon: Icon(Icons.notifications_active, color: Colors.white),
+              onPressed: () {
+                // Handle notification tap
+              },
+            ),
           ],
         ),
       ),
-      body: SingleChildScrollView(
+
+        body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(width * 0.05),
           child: Column(
@@ -164,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 onPressed: () {},
                 child: Center(
-                  child: Text("Emergency SOS", style: TextStyle(fontSize: 18, color: Colors.white)),
+                  child: Text("Emergency", style: TextStyle(fontSize: 18, color: Colors.white)),
                 ),
               ),
             ],
