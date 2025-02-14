@@ -171,6 +171,9 @@ class _HomeScreenState extends State<HomeScreen> {
               // ),
               SizedBox(height: height * 0.03),
               FadeInRight(
+                child: ActivityCard(),
+              ),
+              FadeInRight(
                 child: _buildActivityTracker(width),
               ),
               SizedBox(height: height * 0.03),
