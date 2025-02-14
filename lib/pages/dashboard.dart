@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:pawscare/pages/AdoptionCatalog.dart';
 import 'package:pawscare/pages/AdoptionPage.dart';
 import 'package:pawscare/pages/OnBoarding1.dart';
 
@@ -94,13 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
-                      onTap: (){ Get.to(AdoptionPage());},
+                  onTap: (){Get.to(AdoptionCatalog());},
                       child: _buildFeatureButton(Icons.pets, "Adoption")),
                   InkWell(
-                      onTap: (){ Get.to(PawsCareChatbot());},
+                      // onTap: (){ Get.to(PawsCareChatbot());},
                       child: _buildFeatureButton(Icons.health_and_safety, "Health Scan")),
                   _buildFeatureButton(Icons.volunteer_activism, "Rescue"),
-                  _buildFeatureButton(Icons.favorite, "Donations"),
+                  InkWell(
+
+                      child: _buildFeatureButton(Icons.favorite, "Donations")),
                 ],
               ),
               SizedBox(height: height * 0.03),
@@ -207,6 +210,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(PawsCareChatbot());
+        },
+        backgroundColor: Colors.teal,
+        child: Icon(Icons.chat, color: Colors.white),
+      ),
+
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
         color: Color(0xFF1E6F52),

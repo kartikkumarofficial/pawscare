@@ -45,8 +45,8 @@ class RecommendedSection extends StatelessWidget {
             padding: EdgeInsets.all(4),
             itemBuilder: (context, index) {
               return Container(
-                width: 160, // Slightly increased width for better layout
-                margin: EdgeInsets.symmetric(horizontal: 8), // Adds space between cards
+                width: 160,
+                margin: EdgeInsets.symmetric(horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 14, horizontal: 16),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -56,13 +56,13 @@ class RecommendedSection extends StatelessWidget {
                       color: Colors.black.withOpacity(0.12),
                       blurRadius: 6,
                       spreadRadius: 3,
-                      offset: Offset(0, 3), // Creates a subtle bottom shadow
+                      offset: Offset(0, 3),
                     ),
                     BoxShadow(
                       color: Colors.black.withOpacity(0.06),
                       blurRadius: 4,
                       spreadRadius: 2,
-                      offset: Offset(0, -2), // Slight top shadow
+                      offset: Offset(0, -2),
                     ),
                   ],
                 ),

@@ -59,7 +59,7 @@ class AdoptionPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Ember Hunter",
+                      "Boscow",
                       style:
                       TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
@@ -87,26 +87,26 @@ class AdoptionPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                petInfoCard("Age", "9 months"),
-                petInfoCard("Breed", "Indian Spitz"),
+                petInfoCard("Age", "2 years"),
+                petInfoCard("Breed", "Golden Retriever"),
               ],
             ),
             SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                petInfoCard("Sex", "Female"),
+                petInfoCard("Sex", "Male"),
                 petInfoCard("Weight", "5 kg"),
               ],
             ),
             SizedBox(height: 12),
             Text(
-              "About Ember",
+              "About Boscow",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 6),
             Text(
-              "Ember is an affectionate and playful Indian Spitz looking for a loving home. She is well-socialized, friendly, and great with families.",
+              "Boscow is an affectionate and playful Indian Spitz looking for a loving home. He is well-socialized, friendly, and great with families.",
               style: TextStyle(color: Colors.grey[700]),
             ),
             Spacer(),

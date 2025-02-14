@@ -51,6 +51,7 @@ class _PawsCareChatbotState extends State<PawsCareChatbot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.teal.shade50,
       appBar: AppBar(
         title: Row(
           children: [
@@ -58,24 +59,25 @@ class _PawsCareChatbotState extends State<PawsCareChatbot> {
               backgroundImage: AssetImage('assets/chatbot_icon.png'),
             ),
             SizedBox(width: 10),
-            Text("PawsCare+ Chatbot")
+            Text("PawsCare+ Chatbot", style: TextStyle(fontWeight: FontWeight.bold))
           ],
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.teal.shade600,
+        elevation: 0,
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.teal.shade100, Colors.teal.shade400],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: Column(
-          children: [
-            Expanded(
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
               child: ListView.builder(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
                 itemCount: messages.length,
                 itemBuilder: (context, index) {
                   String sender = messages[index].keys.first;
@@ -84,23 +86,11 @@ class _PawsCareChatbotState extends State<PawsCareChatbot> {
                   return Align(
                     alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
                     child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      padding: EdgeInsets.all(14),
+                      margin: EdgeInsets.symmetric(vertical: 8),
+                      padding: EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: isUser ? Colors.teal.shade700 : Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(isUser ? 20 : 0),
-                          topRight: Radius.circular(isUser ? 0 : 20),
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 5,
-                            offset: Offset(2, 2),
-                          )
-                        ],
+                        color: isUser ? Colors.teal.shade400 : Colors.teal.shade100,
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
                         message,
@@ -114,52 +104,72 @@ class _PawsCareChatbotState extends State<PawsCareChatbot> {
                 },
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          SizedBox(height: 10),
+          if (_image != null)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.file(_image!, height: 150, fit: BoxFit.cover),
+              ),
+            ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton.icon(
+                onPressed: pickImage,
+                icon: Icon(LucideIcons.image),
+                label: Text("Upload Pet Image"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal.shade600,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                ),
+              ),
+              SizedBox(width: 10),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: Icon(LucideIcons.camera),
+                label: Text("Capture Paw"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal.shade600,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
               children: [
-                ElevatedButton.icon(
-                  onPressed: pickImage,
-                  icon: Icon(LucideIcons.image),
-                  label: Text("Upload Pet Image"),
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      hintText: "Ask something...",
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide.none,
+                      ),
+                      contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+                    ),
+                  ),
                 ),
                 SizedBox(width: 10),
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(LucideIcons.camera),
-                  label: Text("Capture Paw"),
+                FloatingActionButton(
+                  onPressed: () => sendMessage(_controller.text),
+                  backgroundColor: Colors.teal.shade600,
+                  child: Icon(LucideIcons.send, color: Colors.white),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      decoration: InputDecoration(
-                        hintText: "Ask something...",
-                        filled: true,
-                        fillColor: Colors.white,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(25),
-                          borderSide: BorderSide.none,
-                        ),
-                        contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 20),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  FloatingActionButton(
-                    onPressed: () => sendMessage(_controller.text),
-                    backgroundColor: Colors.teal.shade700,
-                    child: Icon(LucideIcons.send, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
