@@ -22,6 +22,7 @@ class WelcomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             FadeIn(
+              duration: Duration(seconds: 3),
               child: Column(
                 children: [
                   Image.asset(

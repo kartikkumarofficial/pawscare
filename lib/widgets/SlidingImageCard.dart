@@ -10,10 +10,12 @@ class _SlidingImageCardState extends State<SlidingImageCard> {
   PageController(initialPage: 0, viewportFraction: 0.9);
   int _currentPage = 0;
   final List<String> images = [
-    'assets/images/cat1.jpg',
-    'assets/images/cat2.jpg',
-    'assets/images/cat3.png',
-
+    'assets/images/happy1.jpg',
+    'assets/images/happy2.jpg',
+    'assets/images/happy3.jpg',
+    'assets/images/happy4.jpg',
+    'assets/images/happy5.jpg',
+    'assets/images/happy6.png',
 
   ];
 
@@ -30,7 +32,7 @@ class _SlidingImageCardState extends State<SlidingImageCard> {
           _currentPage = (_currentPage + 1) % images.length;
           _controller.animateToPage(
             _currentPage,
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds:1000),
             curve: Curves.easeInOut,
           );
         });

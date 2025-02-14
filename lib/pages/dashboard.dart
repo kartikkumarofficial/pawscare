@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/cat2.jpg'),
+                  backgroundImage: AssetImage('assets/images/happy1.jpg'),
                 ),
                 SizedBox(width: 10),
                 Column(
@@ -46,12 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       "Welcome back, Kartik!",
-                      style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.white, fontSize:Get.height*0.023, fontWeight: FontWeight.bold),
                     ),
-                    Text(
-                      "Let's take care of your pet 🐶",
-                      style: TextStyle(color: Colors.white70, fontSize: 12),
-                    ),
+                    // Text(
+                    //   "Let's take care of your pet 🐶",
+                    //   style: TextStyle(color: Colors.white70, fontSize: 12),
+                    // ),
                   ],
                 ),
               ],
@@ -59,7 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
             IconButton(
               icon: Icon(Icons.notifications_active, color: Colors.white),
               onPressed: () {
-                // Handle notification tap
               },
             ),
           ],
