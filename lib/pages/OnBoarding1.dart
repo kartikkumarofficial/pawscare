@@ -1,165 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:pawscare/widgets/SlidingImageCard.dart';
+import 'dashboard.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: Stack(
-        children: [
-          // Background gradient
-          Container(
-            width: screenWidth,
-            height: screenHeight,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFFFFF8E1), Color(0xFF1E6F52)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-            ),
-          ),
-
-          // Curved Design
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: screenHeight * 0.45,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
-                ),
-              ),
-            ),
-          ),
-
-          // Main Content
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: screenHeight * 0.1),
-
-              // Large Circle Placeholder (Main Dog Image)
-              Center(
-                child: CircleAvatar(
-                  radius: screenWidth * 0.2,
-                  backgroundColor: Colors.grey[300],
-                  child: Icon(Icons.pets, size: screenWidth * 0.15, color: Colors.white),
-                ),
-              ),
-
-              SizedBox(height: screenHeight * 0.02),
-
-              // Small Circular Placeholders
-              Stack(
-                alignment: Alignment.center,
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(255, 236, 201, 1.0), // Warm background color
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FadeIn(
+              child: Column(
                 children: [
-                  Positioned(
-                    top: 0,
-                    left: screenWidth * 0.2,
-                    child: CircleAvatar(
-                      radius: screenWidth * 0.08,
-                      backgroundColor: Colors.grey[300],
-                      child: Icon(Icons.pets, size: screenWidth * 0.05, color: Colors.white),
+                  Image.asset(
+                    'assets/images/app_icon.png',
+                    height: 150,
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Welcome to PawsCare+",
+                    style: GoogleFonts.poppins(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.brown[800],
                     ),
                   ),
-                  Positioned(
-                    top: 0,
-                    right: screenWidth * 0.2,
-                    child: CircleAvatar(
-                      radius: screenWidth * 0.08,
-                      backgroundColor: Colors.grey[300],
-                      child: Icon(Icons.pets, size: screenWidth * 0.05, color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: screenWidth * 0.15,
-                    child: CircleAvatar(
-                      radius: screenWidth * 0.06,
-                      backgroundColor: Colors.grey[300],
-                      child: Icon(Icons.pets, size: screenWidth * 0.04, color: Colors.white),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: screenWidth * 0.15,
-                    child: CircleAvatar(
-                      radius: screenWidth * 0.06,
-                      backgroundColor: Colors.grey[300],
-                      child: Icon(Icons.pets, size: screenWidth * 0.04, color: Colors.white),
+                  SizedBox(height: 5),
+                  Text(
+                    "Bringing Paws and People Together",
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      color: Colors.brown[700],
                     ),
                   ),
                 ],
               ),
+            ),
 
-              SizedBox(height: screenHeight * 0.05),
+            SlidingImageCard(),
 
-              // Title Text
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-                child: Text(
-                  "Stay Ahead of Your Pet’s Needs with Ease!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.06,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+            FadeIn(
+              duration: Duration(seconds: 3),
+              child: Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.brown[800],
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(horizontal: 80, vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    child: Text(
+                      "Get Started",
+                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
+                  SizedBox(height: 10),
+                  TextButton(
+                    onPressed: () {},
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Already have an account? ",
+                          style: TextStyle(color: Colors.brown[700]),
+                        ),
+                        Text(
+                          'Log in',
+                          style: TextStyle(
+                            color: Colors.deepOrange,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-
-              SizedBox(height: screenHeight * 0.02),
-
-              // Subtitle Text
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.15),
-                child: Text(
-                  "Effortlessly track your pet’s health, mood, and activity for better care.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.04,
-                    color: Colors.black54,
-                  ),
-                ),
-              ),
-
-              SizedBox(height: screenHeight * 0.05),
-
-              // Get Started Button
-              ElevatedButton(
-                onPressed: () {
-                  Get.offAllNamed('/home');
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(
-                    vertical: screenHeight * 0.02,
-                    horizontal: screenWidth * 0.25,
-                  ),
-                  backgroundColor: Colors.orange,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-                child: Text(
-                  "Get Started",
-                  style: TextStyle(
-                    fontSize: screenWidth * 0.05,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

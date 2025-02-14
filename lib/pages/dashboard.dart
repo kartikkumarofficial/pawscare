@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('assets/profile.jpg'),
+                  backgroundImage: AssetImage('assets/images/cat2.jpg'),
                 ),
                 SizedBox(width: 10),
                 Column(
@@ -87,7 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   InkWell(
                       onTap: (){ Get.to(AdoptionPage());},
                       child: _buildFeatureButton(Icons.pets, "Adoption")),
-                  _buildFeatureButton(Icons.health_and_safety, "Health Scan"),
+                  InkWell(
+                      onTap: (){ Get.to(WelcomePage());},
+                      child: _buildFeatureButton(Icons.health_and_safety, "Health Scan")),
                   _buildFeatureButton(Icons.volunteer_activism, "Rescue"),
                   _buildFeatureButton(Icons.favorite, "Donations"),
                 ],
@@ -96,12 +98,12 @@ class _HomeScreenState extends State<HomeScreen> {
               FadeInLeft(
                 child: Container(
                   padding: EdgeInsets.all(20),
-                  margin: EdgeInsets.only(bottom: 15,left: 2,right: 2),
+                  margin: EdgeInsets.only(left: 2,right: 2),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [Colors.lightGreenAccent, Colors.white,],
+                        colors: [Colors.white, Colors.white,],
                 
                     ),
                     color: Colors.white,
@@ -173,9 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
               FadeInRight(
                 child: ActivityCard(),
               ),
-              FadeInRight(
-                child: _buildActivityTracker(width),
-              ),
+
               SizedBox(height: height * 0.03),
               FadeInUp(
                 child: _buildRecommendedSection(),
