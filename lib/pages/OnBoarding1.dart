@@ -15,7 +15,7 @@ class WelcomePage extends StatelessWidget {
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(255, 236, 201, 1.0), // Warm background color
+          color: Color.fromRGBO(255, 236, 201, 1.0),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

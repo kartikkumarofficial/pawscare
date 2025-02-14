@@ -7,6 +7,7 @@ import 'package:pawscare/pages/AdoptionPage.dart';
 import 'package:pawscare/pages/OnBoarding1.dart';
 
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:pawscare/pages/chatbot.dart';
 import 'package:pawscare/widgets/Recomendation_Section.dart';
 import 'package:pawscare/widgets/customwidgets.dart';
 import '../widgets/bottom_navigation_bar.dart';
@@ -20,6 +21,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Widget> _pages = [
+    HomeScreen(),
+    AdoptionPage(),
+    AdoptionPage(),
+    AdoptionPage(),
+  ];
 
   int _selectedIndex = 0;
   @override
@@ -67,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-        body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(width * 0.05),
           child: Column(
@@ -76,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-            FadeInRight(
+              FadeInRight(
                 child: Text("Your furry friend is doing great!",
                     style: TextStyle(fontSize: 16, color: Colors.grey)),
               ),
@@ -89,7 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   InkWell(
                       onTap: (){ Get.to(AdoptionPage());},
                       child: _buildFeatureButton(Icons.pets, "Adoption")),
-                  _buildFeatureButton(Icons.health_and_safety, "Health Scan"),
+                  InkWell(
+                      onTap: (){ Get.to(PawsCareChatbot());},
+                      child: _buildFeatureButton(Icons.health_and_safety, "Health Scan")),
                   _buildFeatureButton(Icons.volunteer_activism, "Rescue"),
                   _buildFeatureButton(Icons.favorite, "Donations"),
                 ],
@@ -101,10 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   margin: EdgeInsets.only(left: 2,right: 2),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [Colors.white, Colors.white,],
-                
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [Colors.white, Colors.white,],
+
                     ),
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
@@ -142,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Text("Excellent", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
                             ],
                           ),
-                
+
                           Column(
                             children: [
                               Icon(LucideIcons.barChart, size: 30, color: Colors.blue),
@@ -152,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Text("Active", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
                             ],
                           ),
-                
+
                           Column(
                             children: [
                               Icon(LucideIcons.smile, size: 30, color: Colors.green),
@@ -204,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
         buttonBackgroundColor: Colors.orange,
         height: 60,
         items: <Widget>[
-          Icon(Icons.home, size: 30, color: Colors.white),
+          Icon(Icons.home,size: 30, color: Colors.white),
           Icon(Icons.pets, size: 30, color: Colors.white),
           Icon(LucideIcons.heartHandshake, size: 30, color: Colors.white),
           Icon(Icons.person, size: 30, color: Colors.white),
@@ -212,7 +221,8 @@ class _HomeScreenState extends State<HomeScreen> {
         index: _selectedIndex,
         onTap: (index) {
           setState(() {
-            _selectedIndex = index; // Update the selected index
+            _selectedIndex = index;
+
           });
         },
       ),
