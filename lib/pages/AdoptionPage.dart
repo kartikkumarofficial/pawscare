@@ -67,14 +67,14 @@ class AdoptionPage extends StatelessWidget {
                       children: [
                         Icon(Icons.location_on, color: Colors.grey, size: 16),
                         SizedBox(width: 4),
-                        Text("Sydney, CA",
+                        Text("Mumbai, India", // Updated location
                             style: TextStyle(color: Colors.grey)),
                       ],
                     ),
                   ],
                 ),
                 Text(
-                  "\$95",
+                  "₹7,900", // Updated price in INR
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -88,7 +88,7 @@ class AdoptionPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 petInfoCard("Age", "9 months"),
-                petInfoCard("Breed", "English Cocker"),
+                petInfoCard("Breed", "Indian Spitz"),
               ],
             ),
             SizedBox(height: 8),
@@ -106,7 +106,7 @@ class AdoptionPage extends StatelessWidget {
             ),
             SizedBox(height: 6),
             Text(
-              "This is a remarkable time as Shelly discovers the world around her. Each smile, babble, and new skill is a milestone to cherish. Your Shelly is ...",
+              "Ember is an affectionate and playful Indian Spitz looking for a loving home. She is well-socialized, friendly, and great with families.",
               style: TextStyle(color: Colors.grey[700]),
             ),
             Spacer(),
