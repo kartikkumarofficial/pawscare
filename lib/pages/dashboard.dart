@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animate_do/animate_do.dart';
 
+import '../widgets/bottom_navigation_bar.dart';
+
 
 class PawsCareApp extends StatelessWidget {
   @override
@@ -189,15 +191,3 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class BottomNavBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.pets), label: "Community"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-      ],
-    );
-  }
-}

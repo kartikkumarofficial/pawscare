@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pawscare/pages/dashboard.dart';
+import 'package:pawscare/pages/intropage_1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PawsCareApp(),
+      home: OnboardingScreen(),
     );
   }
 }
