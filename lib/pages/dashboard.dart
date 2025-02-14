@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:pawscare/pages/AdoptionPage.dart';
 import 'package:pawscare/pages/intropage_1.dart';
 
 import 'package:lucide_icons/lucide_icons.dart';
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   InkWell(
-                      onTap: (){ Get.to(OnboardingScreen());},
+                      onTap: (){ Get.to(AdoptionPage());},
                       child: _buildFeatureButton(Icons.pets, "Adoption")),
                   _buildFeatureButton(Icons.health_and_safety, "Health Scan"),
                   _buildFeatureButton(Icons.volunteer_activism, "Rescue"),
@@ -68,71 +69,82 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               SizedBox(height: height * 0.03),
-              Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 10,
-                      spreadRadius: 2,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "AI Insights",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Column(
-                          children: [
-                            Icon(LucideIcons.smile, size: 30, color: Colors.green),
-                            SizedBox(height: 5),
-                            Text("Mood", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
-                            SizedBox(height: 3),
-                            Text("Happy", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Icon(LucideIcons.barChart, size: 30, color: Colors.blue),
-                            SizedBox(height: 5),
-                            Text("Activity", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
-                            SizedBox(height: 3),
-                            Text("Active", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Icon(LucideIcons.heart, size: 30, color: Colors.red),
-                            SizedBox(height: 5),
-                            Text("Health", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
-                            SizedBox(height: 3),
-                            Text("Excellent", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
               FadeInLeft(
-                child: _buildCard("Today's Pet Insights", "87/100", "Excellent", "3 days until vet visit", width),
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  margin: EdgeInsets.only(bottom: 15,left: 2,right: 2),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Colors.lightGreenAccent, Colors.white,],
+                
+                    ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [BoxShadow(color: Colors.grey.shade300, blurRadius: 5)],
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //     color: Colors.black12,
+                    //     blurRadius: 10,
+                    //     spreadRadius: 1,
+                    //     offset: Offset(0, 4),
+                    //   ),
+                    // ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Today's Pet Insights",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: [
+                              Icon(LucideIcons.heartHandshake, size: 30, color: Colors.red),
+                              SizedBox(height: 5),
+                              Text("Health", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                              SizedBox(height: 3),
+                              Text("Excellent", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
+                            ],
+                          ),
+                
+                          Column(
+                            children: [
+                              Icon(LucideIcons.barChart, size: 30, color: Colors.blue),
+                              SizedBox(height: 5),
+                              Text("Activity", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                              SizedBox(height: 3),
+                              Text("Active", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
+                            ],
+                          ),
+                
+                          Column(
+                            children: [
+                              Icon(LucideIcons.smile, size: 30, color: Colors.green),
+                              SizedBox(height: 5),
+                              Text("Mood", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                              SizedBox(height: 3),
+                              Text("Happy", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
+              // FadeInLeft(
+              //   child: _buildCard("Today's Pet Insights", "87/100", "Excellent", "3 days until vet visit", width),
+              // ),
               SizedBox(height: height * 0.03),
               FadeInRight(
                 child: _buildActivityTracker(width),
