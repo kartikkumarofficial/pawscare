@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'dart:io';
 
 class PawsCareChatbot extends StatefulWidget {
   @override
@@ -9,6 +11,17 @@ class PawsCareChatbot extends StatefulWidget {
 class _PawsCareChatbotState extends State<PawsCareChatbot> {
   final TextEditingController _controller = TextEditingController();
   List<Map<String, String>> messages = [];
+  File? _image;
+  final picker = ImagePicker();
+
+  Future<void> pickImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
   void sendMessage(String text) {
     if (text.isEmpty) return;
@@ -105,7 +118,7 @@ class _PawsCareChatbotState extends State<PawsCareChatbot> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: pickImage,
                   icon: Icon(LucideIcons.image),
                   label: Text("Upload Pet Image"),
                 ),
