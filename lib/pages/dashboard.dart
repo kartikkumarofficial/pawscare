@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
         title: Row(
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage('assets/profile.jpg'), // Replace with real image
+              backgroundImage: AssetImage('assets/profile.jpg'),
             ),
             SizedBox(width: 10),
             Text("Welcome back, Kartik!", style: TextStyle(color: Colors.white, fontSize: 18)),
