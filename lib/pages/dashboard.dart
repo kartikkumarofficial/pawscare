@@ -7,6 +7,7 @@ import 'package:pawscare/pages/AdoptionPage.dart';
 import 'package:pawscare/pages/OnBoarding1.dart';
 
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:pawscare/widgets/Recomendation_Section.dart';
 import 'package:pawscare/widgets/customwidgets.dart';
 import '../widgets/bottom_navigation_bar.dart';
 
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
             Row(
               children: [
                 CircleAvatar(
@@ -73,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
 
 
+
             FadeInRight(
                 child: Text("Your furry friend is doing great!",
                     style: TextStyle(fontSize: 16, color: Colors.grey)),
@@ -86,9 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   InkWell(
                       onTap: (){ Get.to(AdoptionPage());},
                       child: _buildFeatureButton(Icons.pets, "Adoption")),
-                  InkWell(
-                      onTap: (){ Get.to(WelcomePage());},
-                      child: _buildFeatureButton(Icons.health_and_safety, "Health Scan")),
+                  _buildFeatureButton(Icons.health_and_safety, "Health Scan"),
                   _buildFeatureButton(Icons.volunteer_activism, "Rescue"),
                   _buildFeatureButton(Icons.favorite, "Donations"),
                 ],
@@ -177,7 +178,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               SizedBox(height: height * 0.03),
               FadeInUp(
-                child: _buildRecommendedSection(),
+                child: RecommendedSection(),
               ),
               SizedBox(height: height * 0.03),
               ElevatedButton(
@@ -199,13 +200,13 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        color: Color(0xFF1E6F52), // Greenish background color
-        buttonBackgroundColor: Colors.orange, // Orange selected item background
+        color: Color(0xFF1E6F52),
+        buttonBackgroundColor: Colors.orange,
         height: 60,
         items: <Widget>[
           Icon(Icons.home, size: 30, color: Colors.white),
-          Icon(Icons.calendar_today, size: 30, color: Colors.white),
-          Icon(Icons.favorite, size: 30, color: Colors.white),
+          Icon(Icons.pets, size: 30, color: Colors.white),
+          Icon(LucideIcons.heartHandshake, size: 30, color: Colors.white),
           Icon(Icons.person, size: 30, color: Colors.white),
         ],
         index: _selectedIndex,
