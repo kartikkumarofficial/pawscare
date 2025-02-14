@@ -1,27 +1,27 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:pawscare/pages/intropage_1.dart';
 
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:pawscare/widgets/customwidgets.dart';
 import '../widgets/bottom_navigation_bar.dart';
 
 
-class PawsCareApp extends StatelessWidget {
+
+
+class HomeScreen extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.orangeAccent,
-        textTheme: GoogleFonts.poppinsTextTheme(),
-      ),
-      home: HomeScreen(),
-    );
-  }
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class HomeScreen extends StatelessWidget {
+class _HomeScreenState extends State<HomeScreen> {
+
+  int _selectedIndex = 0;
   @override
+
   Widget build(BuildContext context) {
     double height = Get.height;
     double width = Get.width;
@@ -47,21 +47,89 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FadeInUp(
+
+
+            FadeInRight(
                 child: Text("Your furry friend is doing great!",
                     style: TextStyle(fontSize: 16, color: Colors.grey)),
               ),
               SizedBox(height: height * 0.02),
+
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildFeatureButton(Icons.pets, "Adoption"),
+                  InkWell(
+                      onTap: (){ Get.to(OnboardingScreen());},
+                      child: _buildFeatureButton(Icons.pets, "Adoption")),
                   _buildFeatureButton(Icons.health_and_safety, "Health Scan"),
                   _buildFeatureButton(Icons.volunteer_activism, "Rescue"),
                   _buildFeatureButton(Icons.favorite, "Donations"),
                 ],
               ),
               SizedBox(height: height * 0.03),
+              Container(
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 10,
+                      spreadRadius: 2,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "AI Insights",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Column(
+                          children: [
+                            Icon(LucideIcons.smile, size: 30, color: Colors.green),
+                            SizedBox(height: 5),
+                            Text("Mood", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                            SizedBox(height: 3),
+                            Text("Happy", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Icon(LucideIcons.barChart, size: 30, color: Colors.blue),
+                            SizedBox(height: 5),
+                            Text("Activity", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                            SizedBox(height: 3),
+                            Text("Active", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Icon(LucideIcons.heart, size: 30, color: Colors.red),
+                            SizedBox(height: 5),
+                            Text("Health", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black54)),
+                            SizedBox(height: 3),
+                            Text("Excellent", style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black)),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
               FadeInLeft(
                 child: _buildCard("Today's Pet Insights", "87/100", "Excellent", "3 days until vet visit", width),
               ),
@@ -91,7 +159,24 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.transparent,
+        color: Color(0xFF1E6F52), // Greenish background color
+        buttonBackgroundColor: Colors.orange, // Orange selected item background
+        height: 60,
+        items: <Widget>[
+          Icon(Icons.home, size: 30, color: Colors.white),
+          Icon(Icons.calendar_today, size: 30, color: Colors.white),
+          Icon(Icons.favorite, size: 30, color: Colors.white),
+          Icon(Icons.person, size: 30, color: Colors.white),
+        ],
+        index: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index; // Update the selected index
+          });
+        },
+      ),
     );
   }
 
